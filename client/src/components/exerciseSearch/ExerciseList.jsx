@@ -2,7 +2,7 @@ import ExerciseListItem from "./ExerciseListItem";
 import * as React from "react";
 import { useState } from "react";
 import BackButton from "./BackButton";
-import './Pagination.scss'
+import './Pagination.scss';
 
 export default function ExerciseList(props) {
   const [current, setCurrent] = useState("");

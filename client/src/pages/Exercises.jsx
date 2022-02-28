@@ -45,7 +45,6 @@ const Exercises = () => {
   const header = { Muscles: "Muscles", "Body Parts": "Body Parts" };
   const navigate = useNavigate();
   const onPartNameSelection = (name) => {
-    console.log("In applications name is:", name);
     navigate(`/exercises/${part}/exercise/${name}`);
   };
 

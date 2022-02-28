@@ -6,7 +6,6 @@ export default function ShowExercise(props) {
     const [anchorEl, setAnchorEl] = React.useState(true);
     const handleClose = () => {
         setAnchorEl(!anchorEl);
-        console.log("Close got clicked")
     };
     console.log(props)
     return (

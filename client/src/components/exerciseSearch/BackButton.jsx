@@ -8,8 +8,7 @@ export default function BackButton() {
 
   return (
     <Stack >
-     {/*  <Button onClick={() => navigate(-1)} variant="contained"><ArrowBackIosIcon/></Button> */}
-      <div className='left-arrow' onClick={() => navigate(-1)}><ArrowBackIosIcon/></div>
+      <div className='left-arrow' onClick={() => navigate(-1)}><ArrowBackIosIcon /></div>
     </Stack>
   );
 }

@@ -12,7 +12,6 @@ export default function Application() {
   const navigate = useNavigate();
 
   const onExerciseSelection = (name) => {
-    console.log("In applications name is:", name);
     navigate(`/exercises/${name}`);
   };
 

@@ -9,7 +9,6 @@ import Fab from "@mui/material/Fab";
 export default function Calender(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showAddForm, setShowAddForm] = useState(false);
-  // const [showEditForm, setShowEditForm] = useState(false);
   const [editExerciseObj, setEditExerciseObj] = useState({});
 
   useEffect(() => {
@@ -25,9 +24,7 @@ export default function Calender(props) {
     );
   };
 
-  // const dateStringFormat = selectedDate.toDateString();
   const splitDate = selectedDate.toDateString().split(" ");
-  // console.log(selectedDate)
   return (
     <div className="calender-container">
       <div className="calender-information">

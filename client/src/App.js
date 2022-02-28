@@ -18,7 +18,7 @@ import About from "./about/About";
 import Stack from "./about/Stack";
 
 //temporarty data- this data will be fetched from API call
-/* const exercises = [
+const exercises = [
   {
     bodyPart: "waist",
     equipment: "body weight",
@@ -110,14 +110,14 @@ const todayWeather = {
   id: 6167865,
   name: "Toronto",
   cod: 200,
-}; */
+};
 
 function App() {
   const { auth } = useContext(authContext);
   const [show, setShow] = useState("LOGIN");
   const { quotes } = useQuotes();
-  const { exercises } = useExercisesData()
-  const { todayWeather } = useWeather();
+  //const { exercises } = useExercisesData()
+  //const { todayWeather } = useWeather();
 
   const showLogin = () => {
     setShow("LOGIN");

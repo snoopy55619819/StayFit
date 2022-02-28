@@ -19,7 +19,6 @@ export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
   const handleHomeButton = () => {
-    console.log("Home button clicked!!");
     navigate("..");
   };
   const handleMenu = (event) => {
