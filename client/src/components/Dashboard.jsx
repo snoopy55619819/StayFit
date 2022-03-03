@@ -1,23 +1,20 @@
 import React from "react";
 import DashboardExerciseList from "./Dashboard_exercise_list";
 import "../styles/Dashboard.scss";
+import { formatedDate } from "../helpers/dashboardHelpers";
 
 export default function Dashboard(props) {
   const {quotes} = props;
-
-  const randomQuote = Math.floor((Math.random() * 6));
-
-  const formatedDate = () => {
-    const today = new Date();
-    const splitDate = today.toDateString().split(' ');
-    return `${splitDate[0]}, ${splitDate[1]} ${splitDate[2]}, ${splitDate[3]}`;
-  }
+  
   //weather api data======
   const weather = props.todayWeather
   const temperatureInCelsius = Math.round(weather.main.temp)
   const { icon } = weather.weather['0']
   const iconurl = `http://openweathermap.org/img/w/${icon}.png`;
   //=========**=====
+
+  const randomQuote = Math.floor((Math.random() * 6));
+
   return (
     <div className="container-dashboard">
           <h2 className="dashboard-title">Dashboard</h2>
@@ -33,20 +30,15 @@ export default function Dashboard(props) {
       <section className="container-quote">
         <div className="quote-data" >{quotes[randomQuote].quote}</div>
         <div className="quote-author" >
-          {/* Author: */}
           <div>- {quotes[randomQuote].author}</div>
         </div>
       </section>
 
       <div className="db-titles">
         <h3> Today's Exercises:</h3>
-        {/* <h3> Status</h3> */}
       </div>
-      <DashboardExerciseList
-        selectedDate={new Date()}
-        setEditObj={() => { }}
-        onClick={() => { }}
-      />
+
+      <DashboardExerciseList />
     </div>
   );
 }
