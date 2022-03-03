@@ -1,66 +1,23 @@
-import { React, useState, useEffect, useContext } from "react";
+import { React } from "react";
 import DayWorkoutListItem from "./Day_workout_list_item";
 import EmptyDayExercises from "./EmptyDayExercises";
 import "../styles/Day_workout_list.scss";
-import axios from "axios";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { authContext } from '../providers/AuthProvider';
 import CircularIndeterminate from "../global-components/Loading";
+import useDayWorkoutListData from "../hooks/useDayWorkoutListData";
+import { isPast } from "../helpers/calenderHelpers";
 
 export default function DayWorkoutList(props) {
-  const { user } = useContext(authContext);
   const selectedDate = props.selectedDate.toDateString();
   const { setEditObj } = props;
 
-  const [dayExercises, setDayExercises] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [exerciseDeleted, setExerciseDeleted] = useState(false);
-
-  const toggleDeleted = () => {
-    setExerciseDeleted(!exerciseDeleted);
-  };
-
-  useEffect(() => {
-    const updateData = async () => {
-      setLoading(true);
-      await axios
-        .get(`/day-exercises/${user.id}/${selectedDate}`)
-        .then((response) => {
-          setTimeout(() => {
-            setLoading(false);
-          }, 500);
-          setDayExercises([...response.data]);
-        });
-    };
-    updateData();
-  }, [selectedDate, exerciseDeleted, user]);
-
-  const persistIsCompleted = async (dayExerciseId) => {
-    // Update is_completed status in database
-    await axios.patch(
-      `/day-exercises/${dayExerciseId}`,
-      {})
-      .then(() => {
-        setDayExercises(prev => {
-          return prev.map(item => {
-            if(item.day_exercise_id === dayExerciseId) {
-              item.is_completed = !item.is_completed
-            }
-            return item;
-          })
-        })
-
-        let sortedExercises = dayExercises.sort((x, y) => {
-          console.log(x)
-          return (x.is_completed === y.is_completed)? 0 : x.is_completed? 1 : -1;
-        })
-        setDayExercises(sortedExercises)
-      })
-  };
-
-  const isPast = (someDate) => 
-  someDate.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
+  const {
+    dayExercises,
+    loading,
+    toggleDeleted,
+    persistIsCompleted
+  } = useDayWorkoutListData(selectedDate);
 
   const exerciseItems = dayExercises.map((exercise) => (
     <DayWorkoutListItem
