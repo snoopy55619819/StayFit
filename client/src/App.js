@@ -139,26 +139,20 @@ function App() {
           </div>
           <div className="routes">
             <Routes>
-              {/* <Route path="/" element={<Dashboard/>} /> */}
-              {/* rn - not working */}
               <Route
-                exact
-                path="/"
+                exact path="/"
                 element={
                   <Dashboard quotes={quotes} todayWeather={todayWeather} />
                 }
               />
               <Route
-                exact
-                path="/calender"
+                exact path="/calender"
                 element={<Calender exercises={exercises} />}
               />
-              {/* change path to /calender; once get Dashboard working */}
               <Route exact path="/exerciseCategory" element={<Application />} />
               <Route exact path="/exercises/:part" element={<Exercises />} />
               <Route
-                exact
-                path="/exercises/:part/exercise/:name"
+                exact path="/exercises/:part/exercise/:name"
                 element={<Exercise exercises={exercises} />}
               />
               <Route exact path="/about" element={<About />} />
