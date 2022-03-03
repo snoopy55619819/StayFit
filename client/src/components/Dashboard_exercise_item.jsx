@@ -1,7 +1,8 @@
-import { React, useState } from "react";
+import { React } from "react";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../styles/Dashboard_exercise_list_item.scss'
+import useDashboardListItemData from "../hooks/useDashboardListItemData";
 
 export default function DashboardExerciseListItem(props) {
   const { workoutObj, onChange } = props;
@@ -15,12 +16,10 @@ export default function DashboardExerciseListItem(props) {
     is_completed,
   } = workoutObj;
 
-  const [localCompleted, setLocalCompleted] = useState(is_completed);
-
-  const onClickHandler = () => {
-    setLocalCompleted(!localCompleted);
-    onChange();
-  };
+  const {
+    localCompleted,
+    onClickHandler
+  } = useDashboardListItemData(is_completed, onChange)
 
   return (
     <div className="db-card">
