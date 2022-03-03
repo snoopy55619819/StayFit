@@ -1,27 +1,21 @@
 import React from "react";
 import "../styles/WeeklyCalender.scss";
+import { getDays } from "../helpers/calenderHelpers";
 
 export default function WeeklyCalender(props) {
   const { currDate, onClick, onClose } = props;
-  let day3 = new Date(currDate);
-  let day1 = new Date(currDate);
-  let day2 = new Date(currDate);
-  let day4 = new Date(currDate);
-  let day5 = new Date(currDate);
-  // console.log(day1)
-
-  day1.setDate(day1.getDate() - 2);
-  day2.setDate(day2.getDate() - 1);
-  day4.setDate(day4.getDate() + 1);
-  day5.setDate(day5.getDate() + 2);
-  // console.log(day1)
-
-  let day1Info = day1.toDateString().split(" ");
-  let day2Info = day2.toDateString().split(" ");
-  let day3Info = day3.toDateString().split(" ");
-  let day4Info = day4.toDateString().split(" ");
-  let day5Info = day5.toDateString().split(" ");
-
+  const {
+    day1,
+    day2,
+    day4,
+    day5,
+    day1Info,
+    day2Info,
+    day3Info,
+    day4Info,
+    day5Info
+  } = getDays(currDate);
+  
   return (
     <section className="weekCalenderContainer">
       <article
