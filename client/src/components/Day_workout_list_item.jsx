@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import {
   faTrashCan,
   faPenToSquare,
@@ -7,9 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/Day_workout_list_item.scss";
-import axios from "axios";
 import DeletePopup from "./popup/DeletePopup";
 import "./popup/popup.scss";
+import useDayListItemData from "../hooks/useDayListItemData";
 
 export default function DayWorkoutListItem(props) {
   const { workoutObj, onChange, onEditClick, toggleDeleted } = props;
@@ -41,37 +41,15 @@ export default function DayWorkoutListItem(props) {
     recurring_saturday ||
     recurring_sunday;
 
-  const [localCompleted, setLocalCompleted] = useState(is_completed);
-
-  const onClickHandler = () => {
-    setLocalCompleted(!localCompleted);
-    onChange();
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const onSingleDelete = async () => {
-    await axios
-      .patch(`/exercises/${day_exercise_id}`)
-      .then(() => {
-        toggleDeleted();
-        togglePopup();
-      });
-  };
-  const onAllDelete = async () => {
-    console.log(workoutObj);
-    await axios
-      .delete(`/exercises/${exercise_id}`)
-      .then(() => {
-        toggleDeleted();
-        togglePopup();
-      });
-  };
-
+  const {
+    localCompleted,
+    isOpen,
+    onClickHandler,
+    togglePopup,
+    onSingleDelete,
+    onAllDelete
+  } = useDayListItemData(is_completed, onChange, day_exercise_id, exercise_id, toggleDeleted);
+  
   return (
     <div className="card">
       {isOpen && (
@@ -128,7 +106,6 @@ export default function DayWorkoutListItem(props) {
 
           <div className="exercise-not-completed-button">
 
-            
             <input
               type="checkbox"
               id="demo"
