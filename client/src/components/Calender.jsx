@@ -1,30 +1,25 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import DayWorkoutList from "./Day_workout_list";
 import WeeklyCalender from "./WeeklyCalender";
 import AddForm from "../global-components/AddForm";
 import EditForm from "../global-components/EditForm";
 import "../styles/Calender.scss";
 import Fab from "@mui/material/Fab";
+import useCalenderData from "../hooks/useCalenderData";
+import { isToday } from "../helpers/calenderHelpers";
 
 export default function Calender(props) {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [editExerciseObj, setEditExerciseObj] = useState({});
-
-  useEffect(() => {
-    setEditExerciseObj({});
-  }, [selectedDate]);
-
-  const isToday = (someDate) => {
-    const today = new Date();
-    return (
-      someDate.getDate() === today.getDate() &&
-      someDate.getMonth() === today.getMonth() &&
-      someDate.getFullYear() === today.getFullYear()
-    );
-  };
+  const {
+    selectedDate,
+    setSelectedDate,
+    showAddForm,
+    setShowAddForm,
+    editExerciseObj,
+    setEditExerciseObj
+  } = useCalenderData();
 
   const splitDate = selectedDate.toDateString().split(" ");
+  
   return (
     <div className="calender-container">
       <div className="calender-information">
