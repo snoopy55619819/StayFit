@@ -1,5 +1,5 @@
 import { React } from "react";
-import DayWorkoutList from "./Day_workout_list";
+import DayWorkoutList from "./DayWorkoutList";
 import WeeklyCalender from "./WeeklyCalender";
 import AddForm from "../global-components/AddForm";
 import EditForm from "../global-components/EditForm";

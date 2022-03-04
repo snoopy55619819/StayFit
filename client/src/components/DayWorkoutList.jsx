@@ -1,7 +1,7 @@
 import { React } from "react";
-import DayWorkoutListItem from "./Day_workout_list_item";
+import DayWorkoutListItem from "./DayWorkoutListItem";
 import EmptyDayExercises from "./EmptyDayExercises";
-import "../styles/Day_workout_list.scss";
+import "../styles/DayWorkoutList.scss";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import CircularIndeterminate from "../global-components/Loading";

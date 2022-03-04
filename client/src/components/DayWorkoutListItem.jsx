@@ -6,7 +6,7 @@ import {
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../styles/Day_workout_list_item.scss";
+import "../styles/DayWorkoutListItem.scss";
 import DeletePopup from "./popup/DeletePopup";
 import "./popup/popup.scss";
 import useDayListItemData from "../hooks/useDayListItemData";

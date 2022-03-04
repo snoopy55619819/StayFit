@@ -1,8 +1,8 @@
 import { React } from "react";
 import EmptyDayExercises from "./EmptyDayExercises";
 import CircularIndeterminate from "../global-components/Loading";
-import DashboardExerciseListItem from "./Dashboard_exercise_item";
-import "../styles/Dashboard_exercise_list.scss";
+import DashboardExerciseListItem from "./DashboardExerciseListItem";
+import "../styles/DashboardExerciseList.scss";
 import useDashboardListData from "../hooks/useDashboardListData";
 
 export default function DashboardExerciseList() {
