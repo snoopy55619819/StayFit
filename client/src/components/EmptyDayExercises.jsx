@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Day_workout_list_item.scss";
+import "../styles/DayWorkoutListItem.scss";
 
 export default function EmptyDayExercises() {
   return (

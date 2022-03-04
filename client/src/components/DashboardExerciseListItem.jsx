@@ -1,7 +1,7 @@
 import { React } from "react";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import '../styles/Dashboard_exercise_list_item.scss'
+import '../styles/DashboardExerciseListItem.scss';
 import useDashboardListItemData from "../hooks/useDashboardListItemData";
 
 export default function DashboardExerciseListItem(props) {

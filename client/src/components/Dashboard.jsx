@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardExerciseList from "./Dashboard_exercise_list";
+import DashboardExerciseList from "./DashboardExerciseList";
 import "../styles/Dashboard.scss";
 import { formatedDate } from "../helpers/dashboardHelpers";
 
